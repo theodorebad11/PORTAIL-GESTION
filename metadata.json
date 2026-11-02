@@ -1,0 +1,6 @@
+{
+  "name": "Portail Licence 2 - Gestion de Promotion",
+  "description": "Portail officiel de gestion de classe pour la Licence 2 : événements, photocopies, rattrapages, annonces officielles, forum d'échange et espace d'administration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

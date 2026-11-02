@@ -1,0 +1,167 @@
+{
+  "entities": {
+    "ClassEvent": {
+      "title": "ClassEvent",
+      "description": "Calendar events, photocopies, make-up classes, and examinations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 5000 },
+        "category": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "location": { "type": "string" },
+        "author": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "category", "date"]
+    },
+    "StudentProfile": {
+      "title": "StudentProfile",
+      "description": "Student roster record for the official class sheet",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fullName": { "type": "string", "maxLength": 150 },
+        "email": { "type": "string", "maxLength": 150 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "serie": { "type": "string", "maxLength": 100 },
+        "statusInClass": { "type": "string", "maxLength": 50 },
+        "studentNumber": { "type": "string", "maxLength": 50 },
+        "registeredAt": { "type": "string" }
+      },
+      "required": ["fullName", "email", "statusInClass", "studentNumber"]
+    },
+    "Poll": {
+      "title": "Poll",
+      "description": "Class democratic survey and votes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "question": { "type": "string", "maxLength": 300 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "category": { "type": "string" },
+        "status": { "type": "string" },
+        "totalVotes": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "author": { "type": "string" }
+      },
+      "required": ["question", "status"]
+    },
+    "ActivityLogItem": {
+      "title": "ActivityLogItem",
+      "description": "Audit log item of administrative and student actions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "actionType": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "author": { "type": "string" },
+        "authorRole": { "type": "string" },
+        "category": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "badge": { "type": "string" }
+      },
+      "required": ["actionType", "title", "timestamp"]
+    },
+    "PhotocopieOrder": {
+      "title": "PhotocopieOrder",
+      "description": "Student photocopy booking order",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "eventId": { "type": "string" },
+        "eventTitle": { "type": "string" },
+        "studentName": { "type": "string" },
+        "studentEmail": { "type": "string" },
+        "studentIdNumber": { "type": "string" },
+        "quantity": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string" },
+        "orderDate": { "type": "string" }
+      },
+      "required": ["studentName", "eventTitle", "status"]
+    },
+    "DiscussionPost": {
+      "title": "DiscussionPost",
+      "description": "Community question or media publication",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorRole": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "categoryTag": { "type": "string" },
+        "likes": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["authorName", "title", "content"]
+    },
+    "HelpTicket": {
+      "title": "HelpTicket",
+      "description": "Support inquiry or question",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentName": { "type": "string" },
+        "studentEmail": { "type": "string" },
+        "category": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["studentName", "subject", "message", "status"]
+    },
+    "SiteSettings": {
+      "title": "SiteSettings",
+      "description": "Global site customization and semester details",
+      "type": "object",
+      "properties": {
+        "siteName": { "type": "string" },
+        "siteSubtitle": { "type": "string" },
+        "siteLogoUrl": { "type": "string" },
+        "customLevelTerm": { "type": "string" },
+        "activeSemester": { "type": "number" }
+      },
+      "required": ["siteName"]
+    }
+  },
+  "firestore": {
+    "/events/{eventId}": {
+      "schema": "ClassEvent",
+      "description": "Class events, courses, exams, and photocopies"
+    },
+    "/students/{studentId}": {
+      "schema": "StudentProfile",
+      "description": "Official class roster (fiche de classe)"
+    },
+    "/polls/{pollId}": {
+      "schema": "Poll",
+      "description": "Class democratic polls and surveys"
+    },
+    "/activity_logs/{logId}": {
+      "schema": "ActivityLogItem",
+      "description": "Activity audit log for modifications by admin and members"
+    },
+    "/orders/{orderId}": {
+      "schema": "PhotocopieOrder",
+      "description": "Student photocopy reservations"
+    },
+    "/discussions/{discussionId}": {
+      "schema": "DiscussionPost",
+      "description": "Community discussions and publications"
+    },
+    "/tickets/{ticketId}": {
+      "schema": "HelpTicket",
+      "description": "Student support help tickets"
+    },
+    "/settings/{settingsId}": {
+      "schema": "SiteSettings",
+      "description": "Global portal settings and semester configuration"
+    }
+  }
+}

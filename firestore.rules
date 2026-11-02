@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default safety catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Class Events collection
+    match /events/{eventId} {
+      allow read, write: if true;
+    }
+
+    // Registered students roster
+    match /students/{studentId} {
+      allow read, write: if true;
+    }
+
+    // Promotion polls and surveys
+    match /polls/{pollId} {
+      allow read, write: if true;
+    }
+
+    // Activity log items
+    match /activity_logs/{logId} {
+      allow read, write: if true;
+    }
+
+    // Photocopy orders
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+
+    // Community discussions and media posts
+    match /discussions/{discussionId} {
+      allow read, write: if true;
+    }
+
+    // Support and help tickets
+    match /tickets/{ticketId} {
+      allow read, write: if true;
+    }
+
+    // Portal global settings
+    match /settings/{settingsId} {
+      allow read, write: if true;
+    }
+
+    // Firebase connection probe
+    match /test/{testId} {
+      allow read, write: if true;
+    }
+
+    // Account credentials & password recovery
+    match /credentials/{credentialId} {
+      allow read, write: if true;
+    }
+  }
+}

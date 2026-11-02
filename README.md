@@ -1,20 +1,47 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# 🎓 Portail Licence 2 — Gestion de Promotion
 
-# Run and deploy your AI Studio app
+> Plateforme officielle de gestion et coordination de la classe de Licence 2.
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/7ea7b331-dd83-4bda-a1c9-746e63bf98f8
+## 📌 Présentation
 
-## Run Locally
+Le Portail Gestion est une application web complète dédiée à la gestion interne d'une promotion universitaire. Elle centralise les informations des étudiants, les événements de la classe, le partage de médias et l'administration, dans une interface moderne et intuitive.
 
-**Prerequisites:**  Node.js
+---
+
+## ✨ Fonctionnalités
+
+- 📅 **Gestion des événements** — Calendrier des activités et dates importantes de la promotion
+- 👤 **Fiches étudiants** — Profils détaillés de chaque membre de la classe
+- 🖼️ **Partage de médias** — Espace dédié au partage de fichiers et contenus entre étudiants
+- 🛠️ **Espace d'administration** — Tableau de bord réservé aux coordinateurs et délégués
+- 🌗 **Mode clair / sombre** — Interface adaptable selon les préférences
+
+---
+
+## 🛠️ Stack technique
+
+| Technologie | Rôle |
+|---|---|
+| React + TypeScript | Interface utilisateur |
+| Vite | Bundler et serveur de développement |
+| Tailwind CSS | Styles et mise en page |
+| Plus Jakarta Sans / Space Grotesk | Typographies |
+| Gemini AI | Assistant intelligent intégré |
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+PORTAIL-GESTION/
+├── public/              # Fichiers statiques
+├── src/
+│   ├── components/      # Composants React réutilisables
+│   ├── pages/           # Pages principales
+│   ├── assets/          # Images et ressources
+│   └── main.tsx         # Point d'entrée
+├── index.html
+├── tailwind.config.js
+├── vite.config.ts
+└── package.json
+
+Ce projet est à usage académique et interne à la promotion.
+© 2026 EDOH Koffi Théodore — Tous droits rése

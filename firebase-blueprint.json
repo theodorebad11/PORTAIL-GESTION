@@ -1,0 +1,374 @@
+{
+  "entities": {
+    "ClassEvent": {
+      "title": "ClassEvent",
+      "description": "Calendar events, photocopies, make-up classes, and examinations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 5000 },
+        "category": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "location": { "type": "string" },
+        "author": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "expiresAt": { "type": "string" }
+      },
+      "required": ["title", "category", "date"]
+    },
+    "StudentProfile": {
+      "title": "StudentProfile",
+      "description": "Student roster record for the official class sheet",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fullName": { "type": "string", "maxLength": 150 },
+        "email": { "type": "string", "maxLength": 150 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "serie": { "type": "string", "maxLength": 100 },
+        "statusInClass": { "type": "string", "maxLength": 50 },
+        "studentNumber": { "type": "string", "maxLength": 50 },
+        "registeredAt": { "type": "string" }
+      },
+      "required": ["fullName", "email", "statusInClass", "studentNumber"]
+    },
+    "Poll": {
+      "title": "Poll",
+      "description": "Class democratic survey and votes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "question": { "type": "string", "maxLength": 300 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "category": { "type": "string" },
+        "status": { "type": "string" },
+        "totalVotes": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "author": { "type": "string" },
+        "expiresAt": { "type": "string" }
+      },
+      "required": ["question", "status"]
+    },
+    "ActivityLogItem": {
+      "title": "ActivityLogItem",
+      "description": "Audit log item of administrative and student actions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "actionType": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "author": { "type": "string" },
+        "authorRole": { "type": "string" },
+        "category": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "badge": { "type": "string" }
+      },
+      "required": ["actionType", "title", "timestamp"]
+    },
+    "PhotocopieOrder": {
+      "title": "PhotocopieOrder",
+      "description": "Student photocopy booking order",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "eventId": { "type": "string" },
+        "eventTitle": { "type": "string" },
+        "studentName": { "type": "string" },
+        "studentEmail": { "type": "string" },
+        "studentIdNumber": { "type": "string" },
+        "quantity": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string" },
+        "orderDate": { "type": "string" }
+      },
+      "required": ["studentName", "eventTitle", "status"]
+    },
+    "DiscussionPost": {
+      "title": "DiscussionPost",
+      "description": "Community question or media publication",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorRole": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "categoryTag": { "type": "string" },
+        "likes": { "type": "number" },
+        "locked": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "createdAtIso": { "type": "string" },
+        "expiresAt": { "type": "string" }
+      },
+      "required": ["authorName", "title", "content"]
+    },
+    "HelpTicket": {
+      "title": "HelpTicket",
+      "description": "Support inquiry or question",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentName": { "type": "string" },
+        "studentEmail": { "type": "string" },
+        "category": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["studentName", "subject", "message", "status"]
+    },
+    "SiteSettings": {
+      "title": "SiteSettings",
+      "description": "Global site customization and semester details",
+      "type": "object",
+      "properties": {
+        "siteName": { "type": "string" },
+        "siteSubtitle": { "type": "string" },
+        "siteLogoUrl": { "type": "string" },
+        "customLevelTerm": { "type": "string" },
+        "activeSemester": { "type": "number" },
+        "discussionsLocked": { "type": "boolean" }
+      },
+      "required": ["siteName"]
+    },
+    "PedagogicalResource": {
+      "title": "PedagogicalResource",
+      "description": "Course files, annales, and study materials uploaded from admin space",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "maxLength": 300 },
+        "description": { "type": "string", "maxLength": 4000 },
+        "subject": { "type": "string", "maxLength": 150 },
+        "semesterId": { "type": "number" },
+        "category": { "type": "string" },
+        "authorName": { "type": "string", "maxLength": 150 },
+        "authorRole": { "type": "string", "maxLength": 100 },
+        "fileUrl": { "type": "string", "maxLength": 900000 },
+        "fileName": { "type": "string", "maxLength": 300 },
+        "fileSize": { "type": "string", "maxLength": 60 },
+        "downloadCount": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "expiresAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "title", "subject", "semesterId", "category", "authorName", "authorRole", "fileUrl", "fileName", "createdAt"]
+    },
+    "ScheduleSlot": {
+      "title": "ScheduleSlot",
+      "description": "Timetable class slot managed by admin",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "dayOfWeek": { "type": "string" },
+        "startTime": { "type": "string" },
+        "endTime": { "type": "string" },
+        "subject": { "type": "string", "maxLength": 200 },
+        "type": { "type": "string" },
+        "room": { "type": "string", "maxLength": 100 },
+        "professor": { "type": "string", "maxLength": 150 },
+        "semesterId": { "type": "number" },
+        "expiresAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["dayOfWeek", "startTime", "endTime", "subject", "expiresAt"]
+    },
+    "DailyConnectionMetric": {
+      "title": "DailyConnectionMetric",
+      "description": "Daily connection and authentication count metrics per calendar day",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "connectionsCount": { "type": "number" },
+        "loginsCount": { "type": "number" },
+        "lastConnectionAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "date", "connectionsCount", "loginsCount"]
+    },
+    "ChatbotThread": {
+      "title": "ChatbotThread",
+      "description": "Conversation history between portal users, Boa chatbot, and Admin replies",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "visitorName": { "type": "string", "maxLength": 150 },
+        "visitorEmail": { "type": "string", "maxLength": 150 },
+        "visitorRole": { "type": "string", "maxLength": 80 },
+        "lastMessage": { "type": "string", "maxLength": 2000 },
+        "lastMessageAt": { "type": "string", "format": "date-time" },
+        "unreadByAdmin": { "type": "boolean" }
+      },
+      "required": ["id", "visitorName", "lastMessage", "lastMessageAt"]
+    },
+    "AppNotification": {
+      "title": "AppNotification",
+      "description": "Real-time portal broadcast notification for all users",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "title": { "type": "string", "maxLength": 250 },
+        "message": { "type": "string", "maxLength": 1000 },
+        "relatedTab": { "type": "string" },
+        "relatedPostId": { "type": "string" },
+        "createdAtIso": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "type", "title", "message"]
+    },
+    "GroupChatMessage": {
+      "title": "GroupChatMessage",
+      "description": "WhatsApp-style live group chat messages with optional media attachments",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderName": { "type": "string", "maxLength": 150 },
+        "senderEmail": { "type": "string", "maxLength": 150 },
+        "senderRole": { "type": "string" },
+        "content": { "type": "string", "maxLength": 4000 },
+        "mediaType": { "type": "string" },
+        "mediaName": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "createdAtIso": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "senderName", "createdAtIso"]
+    },
+    "UserPresence": {
+      "title": "UserPresence",
+      "description": "Real-time user online/offline status and last seen timestamp",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string", "maxLength": 150 },
+        "name": { "type": "string", "maxLength": 150 },
+        "role": { "type": "string" },
+        "statusInClass": { "type": "string" },
+        "isOnline": { "type": "boolean" },
+        "lastSeenAt": { "type": "string", "format": "date-time" },
+        "isGuest": { "type": "boolean" }
+      },
+      "required": ["id", "name", "isOnline", "lastSeenAt"]
+    },
+    "TreasuryTransaction": {
+      "title": "TreasuryTransaction",
+      "description": "Class treasury and cashbook transaction (Admin-only)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "category": { "type": "string" },
+        "label": { "type": "string", "maxLength": 250 },
+        "amount": { "type": "number" },
+        "date": { "type": "string" },
+        "recordedBy": { "type": "string", "maxLength": 150 },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "paymentMethod": { "type": "string" }
+      },
+      "required": ["id", "type", "category", "label", "amount", "date", "recordedBy"]
+    },
+    "FaqItem": {
+      "title": "FaqItem",
+      "description": "Custom FAQ entry managed by admin",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "question": { "type": "string", "maxLength": 500 },
+        "answer": { "type": "string", "maxLength": 4000 },
+        "category": { "type": "string", "maxLength": 100 },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "question", "answer"]
+    },
+    "SupportContact": {
+      "title": "SupportContact",
+      "description": "Official support & WhatsApp contact managed by admin",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "role": { "type": "string", "maxLength": 120 },
+        "name": { "type": "string", "maxLength": 150 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 500 },
+        "whatsappMessage": { "type": "string", "maxLength": 500 },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "role", "name", "phone"]
+    }
+  },
+  "firestore": {
+    "/events/{eventId}": {
+      "schema": "ClassEvent",
+      "description": "Class events, courses, exams, and photocopies"
+    },
+    "/students/{studentId}": {
+      "schema": "StudentProfile",
+      "description": "Official class roster (fiche de classe)"
+    },
+    "/polls/{pollId}": {
+      "schema": "Poll",
+      "description": "Class democratic polls and surveys"
+    },
+    "/activity_logs/{logId}": {
+      "schema": "ActivityLogItem",
+      "description": "Activity audit log for modifications by admin and members"
+    },
+    "/orders/{orderId}": {
+      "schema": "PhotocopieOrder",
+      "description": "Student photocopy reservations"
+    },
+    "/discussions/{discussionId}": {
+      "schema": "DiscussionPost",
+      "description": "Community discussions and publications"
+    },
+    "/tickets/{ticketId}": {
+      "schema": "HelpTicket",
+      "description": "Student support help tickets"
+    },
+    "/settings/{settingsId}": {
+      "schema": "SiteSettings",
+      "description": "Global portal settings and semester configuration"
+    },
+    "/resources/{resourceId}": {
+      "schema": "PedagogicalResource",
+      "description": "Course documents, annales, and files with automatic expiration"
+    },
+    "/schedule/{slotId}": {
+      "schema": "ScheduleSlot",
+      "description": "Weekly timetable slots with optional expiration"
+    },
+    "/daily_connections/{dayId}": {
+      "schema": "DailyConnectionMetric",
+      "description": "Daily connection and login counters keyed by YYYY-MM-DD"
+    },
+    "/chatbot_conversations/{threadId}": {
+      "schema": "ChatbotThread",
+      "description": "Boa chatbot user conversations and admin responses"
+    },
+    "/notifications/{notifId}": {
+      "schema": "AppNotification",
+      "description": "Broadcast notifications pushed to all portal users"
+    },
+    "/group_chat_messages/{messageId}": {
+      "schema": "GroupChatMessage",
+      "description": "WhatsApp-style group discussion messages and media"
+    },
+    "/user_presence/{presenceId}": {
+      "schema": "UserPresence",
+      "description": "Online/offline user presence and last seen timestamps"
+    },
+    "/treasury/{txId}": {
+      "schema": "TreasuryTransaction",
+      "description": "Class treasury and cashbook operations (Admin-only)"
+    },
+    "/faqs/{faqId}": {
+      "schema": "FaqItem",
+      "description": "Custom FAQs published by admin"
+    },
+    "/support_contacts/{contactId}": {
+      "schema": "SupportContact",
+      "description": "Official support & WhatsApp contacts managed by admin"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Portail-Gestion",
+  "description": "Portail officiel de gestionet d'organisation de différent tâche.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
